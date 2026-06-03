@@ -1,0 +1,206 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QINV, Headcount Economics for Institutional Wealth Managers</title>
+<style>
+:root{--bg:#0d0717;--surface:#160c26;--panel:#1d1033;--muted:#b9a8d4;--text:#f5f0fb;--brand:#a24cff;--brand2:#7c3aed;--dark:#31154e;--line:#e5e7eb;--ink:#111827;--mut2:#5b6472;--accent:#16a34a;--warn:#f59e0b}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:linear-gradient(135deg,#faf8fd,#f4f1fb 45%,#f7f5fb);color:var(--ink);font:15.5px/1.62 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+a{color:var(--brand);text-decoration:none}a:hover{text-decoration:underline}
+.cover{position:relative;overflow:hidden;background:radial-gradient(circle at 16% 12%,rgba(162,76,255,.30),transparent 36%),radial-gradient(circle at 82% 18%,rgba(49,21,78,.55),transparent 34%),linear-gradient(135deg,#0d0717,#160c26 58%,#31154e);color:white;padding:64px 7vw 56px;border-bottom:1px solid rgba(255,255,255,.12)}
+.cover-top{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.cobrand{display:flex;align-items:center;gap:14px;font-size:12.5px;color:#c89cff;font-weight:700;letter-spacing:.04em;text-align:right}
+.cover h1{font-size:clamp(34px,5.4vw,62px);line-height:1.0;margin:34px 0 16px;max-width:1000px;letter-spacing:-.05em;color:#fff;text-shadow:0 3px 22px rgba(0,0,0,.18)}
+.cover .subtitle{font-size:clamp(17px,2.1vw,23px);max-width:940px;color:#e4dcf2;margin:0 0 26px}
+.cover-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;max-width:1080px;margin-top:30px;position:relative;z-index:1}
+.cover-card{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.16);border-radius:18px;padding:16px 18px;min-height:96px;backdrop-filter:blur(8px)}
+.cover-card b{display:block;font-size:12px;text-transform:uppercase;color:#c89cff;letter-spacing:.08em;margin-bottom:7px}
+.cover-card span{font-size:15px;color:white;font-weight:650}
+.powered{margin-top:28px;color:#c89cff;font-weight:700}
+.shell{display:grid;grid-template-columns:300px minmax(0,1fr);gap:28px;max-width:1480px;margin:0 auto;padding:30px 28px 72px}
+.toc{position:sticky;top:20px;align-self:start;background:rgba(255,255,255,.82);border:1px solid var(--line);border-radius:24px;padding:20px;box-shadow:0 20px 60px rgba(15,23,42,.08);backdrop-filter:blur(12px);max-height:calc(100vh - 40px);overflow:auto}
+.toc img{height:26px;margin-bottom:14px}
+.toc h2{font-size:13px;margin:0 0 12px;color:#111827;text-transform:uppercase;letter-spacing:.1em}
+.toc a{display:block;color:#334155;padding:7px 8px;border-radius:10px;font-size:13px;line-height:1.25}
+.toc a:hover{background:#f4f1fb;text-decoration:none;color:#7c3aed}
+main{background:#fff;border:1px solid var(--line);border-radius:28px;padding:46px;box-shadow:0 24px 80px rgba(15,23,42,.10)}
+h2{font-size:29px;margin:46px 0 14px;padding-top:16px;border-top:1px solid #eef2f7;letter-spacing:-.025em;color:#0f172a}
+h2:first-of-type{border-top:0;margin-top:6px}
+h3{font-size:21px;margin:30px 0 10px;color:#0f172a;letter-spacing:-.02em}
+h4{font-size:16px;margin:20px 0 7px;color:#31154e;text-transform:uppercase;letter-spacing:.05em}
+p{margin:10px 0;color:#243041}
+ul,ol{margin:10px 0 16px 22px;padding:0}li{margin:6px 0}
+strong{color:#0f172a}
+code{font:13px/1.4 ui-monospace,Menlo,monospace;background:#f1f5f9;border:1px solid #e2e8f0;border-radius:6px;padding:1px 6px;color:#5b21b6}
+.lead{font-size:18px;color:#31154e;font-weight:550;line-height:1.55;border-left:4px solid var(--brand);padding:4px 0 4px 18px;margin:18px 0 24px}
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:24px 0}
+.kpi{background:linear-gradient(135deg,#1d1033,#31154e);color:#fff;border-radius:18px;padding:20px 18px;box-shadow:0 14px 40px rgba(49,21,78,.18)}
+.kpi b{display:block;font-size:30px;letter-spacing:-.03em;color:#fff;line-height:1}
+.kpi .u{font-size:13px;color:#c89cff;font-weight:700;margin-top:3px}
+.kpi span{display:block;font-size:12.5px;color:#d9ccf0;margin-top:8px;line-height:1.4}
+.table-wrap{overflow:auto;margin:18px 0 26px;border:1px solid var(--line);border-radius:16px;box-shadow:0 10px 30px rgba(15,23,42,.05)}
+table{width:100%;border-collapse:collapse;min-width:620px;background:#fff}
+th{background:#31154e;color:#fff;text-align:left;font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;padding:11px 13px;vertical-align:top}
+td{border-top:1px solid #edf2f7;padding:11px 13px;vertical-align:top;color:#334155;font-size:14px}
+tr:nth-child(even) td{background:#f8fafc}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+.hl{background:linear-gradient(135deg,#f4f1fb,#faf8fd);border:1px solid #e0c8ff;border-radius:18px;padding:20px 22px;margin:22px 0}
+.hl h4{margin-top:0}
+.src{font-size:12.5px;color:#64748b;font-style:italic}
+.tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;margin-left:6px;vertical-align:middle}
+.tag.s{background:#dcfce7;color:#166534}.tag.i{background:#fef9c3;color:#854d0e}.tag.e{background:#e0e7ff;color:#3730a3}
+.callout{border-left:4px solid var(--warn);background:#fffbeb;border-radius:0 14px 14px 0;padding:14px 18px;margin:20px 0;font-size:14px;color:#713f12}
+.scen{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0}
+.scen .c{border:1px solid var(--line);border-radius:16px;padding:16px;background:#fff}
+.scen .c.base{border-color:#a24cff;box-shadow:0 10px 30px rgba(162,76,255,.16)}
+.scen .c b{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:#7c3aed}
+.scen .c .big{font-size:26px;font-weight:750;color:#0f172a;letter-spacing:-.02em;margin:6px 0}
+.foot-tag{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+.footer{max-width:1480px;margin:0 auto;padding:0 28px 42px;color:#64748b;font-size:13px}
+.footer strong{color:#334155}
+.print-btn{position:fixed;right:18px;bottom:18px;z-index:10;border:0;border-radius:999px;background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;padding:13px 18px;font-weight:800;box-shadow:0 14px 34px rgba(79,70,229,.28);cursor:pointer}
+.legend{font-size:12.5px;color:#64748b;margin:6px 0 0}
+@media (max-width:1050px){.shell{display:block;padding:18px}.toc{position:relative;max-height:none;margin-bottom:18px}main{padding:28px}.cover-grid,.kpi-row{grid-template-columns:repeat(2,1fr)}.scen{grid-template-columns:1fr}}
+@media print{body{background:#fff;font-size:11.5px}.cover{-webkit-print-color-adjust:exact;print-color-adjust:exact}.shell{display:block;padding:0}.toc,.print-btn{display:none}main{box-shadow:none;border:0;border-radius:0;padding:18px}h2{break-after:avoid}.table-wrap,.kpi,.scen .c{break-inside:avoid}a{color:inherit}}
+</style></head><body>
+<header class="cover">
+  <div class="cover-top">
+    <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDI3LjEuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHZpZXdCb3g9IjAgMCAyMzk3LjIgNzcxIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAyMzk3LjIgNzcxOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+Cgkuc3Qwe2ZpbGw6I0EyNENGRjt9Cgkuc3Qxe2ZpbGw6IzMxMTU0RTt9Cgkuc3Qye2ZpbGw6I0ZGRkZGRjt9Cjwvc3R5bGU+CjxnPgoJPGc+CgkJPHBhdGggY2xhc3M9InN0MiIgZD0iTTEzNTAuNyw1NzkuNlYyMDYuNGMwLTcuNiw2LjItMTMuOCwxMy44LTEzLjhoNTIuMWM3LjYsMCwxMy44LDYuMiwxMy44LDEzLjh2MzczLjJjMCw3LjYtNi4yLDEzLjgtMTMuOCwxMy44CgkJCWgtNTIuMUMxMzU2LjksNTkzLjMsMTM1MC43LDU4Ny4yLDEzNTAuNyw1NzkuNnoiLz4KCQk8cGF0aCBjbGFzcz0ic3QyIiBkPSJNMjExNC4yLDU4NUwxOTUzLDIxMS44Yy0zLjktOS4xLDIuNy0xOS4yLDEyLjYtMTkuMmg2MS4xYzUuNiwwLDEwLjYsMy40LDEyLjcsOC41bDEzNCwzMjYuNWwtMjguMywxLjUKCQkJbDEzNC4zLTMyOGMyLjEtNS4yLDcuMS04LjUsMTIuNy04LjVoNjFjOS45LDAsMTYuNiwxMC4xLDEyLjYsMTkuMkwyMjA0LjcsNTg1Yy0yLjIsNS03LjEsOC4zLTEyLjYsOC4zaC02NS4zCgkJCUMyMTIxLjMsNTkzLjMsMjExNi40LDU5MC4xLDIxMTQuMiw1ODV6Ii8+CgkJPGc+CgkJCTxwYXRoIGNsYXNzPSJzdDIiIGQ9Ik0xMDc4LjYsNjAyLjVDOTU5LjEsNjAyLjUsODY5LDUxMi40LDg2OSwzOTNzOTAuMS0yMDkuNSwyMDkuNS0yMDkuNWMxMTkuNSwwLDIwOS41LDkwLjEsMjA5LjUsMjA5LjUKCQkJCVMxMTk4LDYwMi41LDEwNzguNiw2MDIuNXogTTEwNzguNiwyNTguNWMtNzQuMiwwLTEyOC4xLDU2LjYtMTI4LjEsMTM0LjVzNTMuOSwxMzQuNSwxMjguMSwxMzQuNWM3NC4yLDAsMTI4LjEtNTYuNiwxMjguMS0xMzQuNQoJCQkJUzExNTIuOCwyNTguNSwxMDc4LjYsMjU4LjV6Ii8+CgkJCTxwYXRoIGNsYXNzPSJzdDIiIGQ9Ik0xMDgwLDY2MnYtNjUuNWwxNDAuOSwxNi42YzYuOSwwLjgsMTIuMiw2LjcsMTIuMiwxMy43djUwYzAsOC4yLTcuMiwxNC42LTE1LjQsMTMuN2wtMTI1LjUtMTQuOAoJCQkJQzEwODUuMyw2NzQuOSwxMDgwLDY2OSwxMDgwLDY2MnoiLz4KCQk8L2c+CgkJPHBhdGggY2xhc3M9InN0MiIgZD0iTTE4MTkuOSw1OTMuM2MtNC4zLDAtOC40LTItMTEtNS41bC0yMzQuMS0zMTMuMmwyNC4yLTYuNHYzMTEuM2MwLDcuNi02LjIsMTMuOC0xMy44LDEzLjhoLTUyLjEKCQkJYy03LjYsMC0xMy44LTYuMi0xMy44LTEzLjhWMjA2LjRjMC03LjYsNi4yLTEzLjgsMTMuOC0xMy44aDY4LjFjNC4zLDAsOC40LDIsMTEsNS41bDIzMC4yLDMwNy44bC0yMC4zLDE0LjlWMjA2LjQKCQkJYzAtNy42LDYuMi0xMy44LDEzLjgtMTMuOGg1Mi4xYzcuNiwwLDEzLjgsNi4yLDEzLjgsMTMuOHYzNzMuMmMwLDcuNi02LjIsMTMuOC0xMy44LDEzLjhIMTgxOS45eiIvPgoJPC9nPgoJPHBhdGggY2xhc3M9InN0MCIgZD0iTTcyNS41LDE5MS4xbC03NC44LDBjLTEyLjQsMC0yMi40LDEwLTIyLjQsMjIuNHYxMjIuMmMwLDExLjMtOC40LDIwLjktMTkuNiwyMi4zbC03NC44LDkuMwoJCWMtMTMuNCwxLjctMjUuMi04LjgtMjUuMi0yMi4zbDAtMjk2LjFjMC0xMi40LTEwLTIyLjQtMjIuNC0yMi40bC03NC44LDBjLTEyLjQsMC0yMi40LDEwLTIyLjQsMjIuNGwwLDMxNi42CgkJYzAsMTEuMy04LjQsMjAuOS0xOS43LDIyLjNsLTc0LjgsOS4zYy0xMy40LDEuNy0yNS4yLTguOC0yNS4yLTIyLjNsMC0xNjEuNWMwLTEyLjQtMTAtMjIuNC0yMi40LTIyLjRsLTc0LjgsMAoJCWMtMTIuNCwwLTIyLjQsMTAtMjIuNCwyMi40bDAsMTgyYzAsMTEuMy04LjQsMjAuOS0xOS42LDIyLjNsLTgwLjMsMTBjLTExLjIsMS40LTE5LjYsMTAuOS0xOS42LDIyLjNsMCwxMjIuMgoJCWMwLDEyLjQsMTAsMjIuNCwyMi40LDIyLjRoNzQuOGMxMi40LDAsMjIuNC0xMCwyMi40LTIyLjRsMC0xMzcuMmMwLTExLjMsOC40LTIwLjksMTkuNi0yMi4zbDc0LjgtOS4zYzEzLjQtMS43LDI1LjIsOC44LDI1LjIsMjIuMwoJCWwwLDI5Ni4xYzAsMTIuNCwxMCwyMi40LDIyLjQsMjIuNGw3NC44LDBjMTIuNCwwLDIyLjQtMTAsMjIuNC0yMi40bDAtMzE2LjZjMC0xMS4zLDguNC0yMC44LDE5LjYtMjIuM2w3NC44LTkuNAoJCWMxMy40LTEuNywyNS4yLDguOCwyNS4yLDIyLjNsMCwxNzYuNGMwLDEyLjQsMTAsMjIuNCwyMi40LDIyLjRsNzQuOCwwYzEyLjQsMCwyMi40LTEwLDIyLjQtMjIuNGwwLTE5N2MwLTExLjMsOC40LTIwLjksMTkuNi0yMi4zCgkJbDgwLjMtMTBjMTEuMi0xLjQsMTkuNi0xMC45LDE5LjYtMjIuM2wwLTEwNy4zQzc0Ny45LDIwMS4yLDczNy45LDE5MS4xLDcyNS41LDE5MS4xeiIvPgo8L2c+Cjwvc3ZnPgo=" alt="QINV" style="height:34px">
+    <div class="cobrand">CONFIDENTIAL<br>Prepared for Caesar.vc</div>
+  </div>
+  <h1>The Economics of an AI-Native Wealth Platform</h1>
+  <p class="subtitle">What QINV saves a large wealth manager when fully integrated: a function-by-function model of operating-headcount displacement, grounded in public filings and independent automation benchmarks.</p>
+  <div class="cover-grid">
+    <div class="cover-card"><b>Base-case saving</b><span>$97M&ndash;$1.6bn / year per large client</span></div>
+    <div class="cover-card"><b>Operating HC displaced</b><span>14% / 31% / 53% (cons / base / aggr)</span></div>
+    <div class="cover-card"><b>Coverage</b><span>XP, BTG, Morgan Stanley WM, UBS GWM</span></div>
+    <div class="cover-card"><b>Method</b><span>Filings + McKinsey/BCG/Citi benchmarks</span></div>
+  </div>
+  <p class="powered">Powered by QINV</p>
+</header>
+<button class="print-btn" onclick="window.print()">Export PDF</button>
+<div class="shell">
+<aside class="toc">
+  <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDI3LjEuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHZpZXdCb3g9IjAgMCAyMzk3LjIgNzcxIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAyMzk3LjIgNzcxOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+Cgkuc3Qwe2ZpbGw6I0EyNENGRjt9Cgkuc3Qxe2ZpbGw6IzMxMTU0RTt9Cgkuc3Qye2ZpbGw6I0ZGRkZGRjt9Cjwvc3R5bGU+CjxnPgoJPHBhdGggY2xhc3M9InN0MCIgZD0iTTcyNS44LDE5MS4xbC03NC44LDBjLTEyLjQsMC0yMi40LDEwLTIyLjQsMjIuNGwwLDEyMi4yYzAsMTEuMy04LjQsMjAuOS0xOS42LDIyLjNsLTc0LjgsOS4zCgkJYy0xMy40LDEuNy0yNS4yLTguOC0yNS4yLTIyLjNsMC0yOTYuMWMwLTEyLjQtMTAtMjIuNC0yMi40LTIyLjRsLTc0LjgsMGMtMTIuNCwwLTIyLjQsMTAtMjIuNCwyMi40bDAsMzE2LjYKCQljMCwxMS4zLTguNCwyMC45LTE5LjcsMjIuM2wtNzQuOCw5LjNjLTEzLjQsMS43LTI1LjItOC44LTI1LjItMjIuM2wwLTE2MS41YzAtMTIuNC0xMC0yMi40LTIyLjQtMjIuNGwtNzQuOCwwCgkJYy0xMi40LDAtMjIuNCwxMC0yMi40LDIyLjRsMCwxODJjMCwxMS4zLTguNCwyMC45LTE5LjYsMjIuM2wtODAuMywxMGMtMTEuMiwxLjQtMTkuNiwxMC45LTE5LjYsMjIuM2wwLDEyMi4yCgkJYzAsMTIuNCwxMCwyMi40LDIyLjQsMjIuNGg3NC44YzEyLjQsMCwyMi40LTEwLDIyLjQtMjIuNGwwLTEzNy4yYzAtMTEuMyw4LjQtMjAuOSwxOS42LTIyLjNsNzQuOC05LjNjMTMuNC0xLjcsMjUuMiw4LjgsMjUuMiwyMi4zCgkJbDAsMjk2LjFjMCwxMi40LDEwLDIyLjQsMjIuNCwyMi40bDc0LjgsMGMxMi40LDAsMjIuNC0xMCwyMi40LTIyLjRsMC0zMTYuNmMwLTExLjMsOC40LTIwLjgsMTkuNi0yMi4zbDc0LjgtOS40CgkJYzEzLjQtMS43LDI1LjIsOC44LDI1LjIsMjIuM2wwLDE3Ni40YzAsMTIuNCwxMCwyMi40LDIyLjQsMjIuNGw3NC44LDBjMTIuNCwwLDIyLjQtMTAsMjIuNC0yMi40bDAtMTk3YzAtMTEuMyw4LjQtMjAuOSwxOS42LTIyLjMKCQlsODAuMy0xMGMxMS4yLTEuNCwxOS42LTEwLjksMTkuNi0yMi4zbDAtMTA3LjNDNzQ4LjMsMjAxLjIsNzM4LjIsMTkxLjEsNzI1LjgsMTkxLjF6Ii8+Cgk8Zz4KCQk8cGF0aCBjbGFzcz0ic3QxIiBkPSJNMTM0OS42LDU4MS4xVjIwNC45YzAtNy42LDYuMi0xMy44LDEzLjgtMTMuOGg1NWM3LjYsMCwxMy44LDYuMiwxMy44LDEzLjh2Mzc2LjJjMCw3LjYtNi4yLDEzLjgtMTMuOCwxMy44CgkJCWgtNTVDMTM1NS43LDU5NC45LDEzNDkuNiw1ODguNywxMzQ5LjYsNTgxLjF6Ii8+CgkJPHBhdGggY2xhc3M9InN0MSIgZD0iTTIyNzUuOCwxOTkuN2wtMTM2LDMzMi4ybDM2LjcsNS43bC0xMzguNi0zMzcuOGMtMi4xLTUuMi03LjEtOC41LTEyLjctOC41aC02NC4zYy05LjksMC0xNi42LDEwLjEtMTIuNiwxOS4yCgkJCWwxNjIuNCwzNzYuMmMyLjIsNSw3LjEsOC4zLDEyLjYsOC4zaDY3LjJjNS41LDAsMTAuNS0zLjMsMTIuNi04LjNsMTYyLjQtMzc2LjJjMy45LTkuMS0yLjctMTkuMi0xMi42LTE5LjJoLTY0LjMKCQkJQzIyODIuOSwxOTEuMiwyMjc3LjksMTk0LjYsMjI3NS44LDE5OS43eiIvPgoJCTxnPgoJCQk8cGF0aCBjbGFzcz0ic3QxIiBkPSJNMTA3OC45LDE4MmMtMTI0LjcsMC0yMTEsOTQuNS0yMTEsMjExczg2LjMsMjExLDIxMSwyMTFjMTI0LjcsMCwyMTEtOTQuNSwyMTEtMjExUzEyMDMuNiwxODIsMTA3OC45LDE4MnoKCQkJCSBNMTA3OC45LDUyNi4xYy03NC44LDAtMTI2LjYtNTcuNi0xMjYuNi0xMzNzNTEuOC0xMzMsMTI2LjYtMTMzYzc0LjgsMCwxMjYuNiw1Ny42LDEyNi42LDEzM1MxMTUzLjcsNTI2LjEsMTA3OC45LDUyNi4xeiIvPgoJCQk8cGF0aCBjbGFzcz0ic3QxIiBkPSJNMTIzNC45LDY3OC41di01M2MwLTctNS4yLTEyLjktMTIuMi0xMy43bC0xNDMuOC0xNi45djY4LjVjMCw3LDUuMiwxMi45LDEyLjIsMTMuN2wxMjguNCwxNS4xCgkJCQlDMTIyNy43LDY5My4xLDEyMzQuOSw2ODYuNywxMjM0LjksNjc4LjV6Ii8+CgkJPC9nPgoJCTxwYXRoIGNsYXNzPSJzdDEiIGQ9Ik0xODQ4LjMsNTE0LjVsLTIzOC41LTMxNy44Yy0yLjYtMy41LTYuNy01LjUtMTEtNS41aC02OS42Yy03LjYsMC0xMy44LDYuMi0xMy44LDEzLjh2Mzc2LjIKCQkJYzAsNy42LDYuMiwxMy44LDEzLjgsMTMuOGg1NWM3LjYsMCwxMy44LTYuMiwxMy44LTEzLjhWMjY0LjhsLTI3LjcsOS45bDIzNiwzMTQuN2MyLjYsMy41LDYuNyw1LjUsMTEsNS41aDY5LjYKCQkJYzcuNiwwLDEzLjgtNi4yLDEzLjgtMTMuOFYyMDQuOWMwLTcuNi02LjItMTMuOC0xMy44LTEzLjhoLTU1Yy03LjYsMC0xMy44LDYuMi0xMy44LDEzLjh2MzEyTDE4NDguMyw1MTQuNSIvPgoJPC9nPgo8L2c+Cjwvc3ZnPgo=" alt="QINV">
+  <h2>Contents</h2>
+  <a href="#summary">1. Executive summary</a>
+  <a href="#thesis">2. Why wealth management is labor-heavy</a>
+  <a href="#platform">3. How QINV disrupts each function</a>
+  <a href="#auto">4. Automation potential by function</a>
+  <a href="#model">5. The headcount-economics model</a>
+  <a href="#clients">6. What it means for large clients</a>
+  <a href="#why">7. Why this is defensible</a>
+  <a href="#method">8. Methodology &amp; sources</a>
+</aside>
+<main>
+
+<h2 id="summary">1. Executive summary</h2>
+<p class="lead">A large wealth manager spends the majority of its cost base on people, and most of that labor sits in repeatable, rules-based operational work: research, reporting, reconciliation, onboarding, and service. QINV is built to absorb exactly that work. Fully integrated, it does not trim a team, it removes the need for the team to scale with assets.</p>
+<p>Wealth and private-banking businesses run at a <strong>60&ndash;80% cost-to-income ratio</strong>, and compensation is typically <strong>50&ndash;65% of total cost</strong> <span class="src">[Industry-reported: Oliver Wyman / Deloitte wealth benchmarks, 2023-2024]</span>. The single largest lever on margin is therefore operational headcount per dollar of AUM. QINV's architecture, <strong>15 modules and 150+ coordinated AI agents across Intelligence, Operations and Distribution</strong>, is designed to break the link between asset growth and headcount growth.</p>
+<div class="kpi-row">
+  <div class="kpi"><b>60-80%</b><div class="u">cost-to-income</div><span>Typical wealth / private-bank operating ratio</span></div>
+  <div class="kpi"><b>50-65%</b><div class="u">of cost is comp</div><span>Compensation as share of total operating cost</span></div>
+  <div class="kpi"><b>30.7%</b><div class="u">base-case</div><span>Operating-headcount work displaced, base scenario</span></div>
+  <div class="kpi"><b>$1.5bn+</b><div class="u">per mega-client</div><span>Base-case annual saving, MS WM / UBS GWM scale</span></div>
+</div>
+<p>The model below is deliberately conservative: advisors and relationship managers are <strong>augmented, never replaced</strong>, only operational, middle and back-office, reporting, onboarding, service and compliance-support staff are in scope, and a <strong>realization factor</strong> discounts automatable work down to actual cost takeout (the remainder is capacity reinvested into growth).</p>
+
+<h2 id="thesis">2. Why wealth management is structurally labor-heavy</h2>
+<p>For every revenue-generating advisor, a wealth franchise carries a stack of operational staff who never touch a client portfolio's strategy but are essential to running it: trade support, reconciliation, performance reporting, account opening, KYC refresh, suitability, document production, surveillance, and client service.</p>
+<div class="table-wrap"><table><thead><tr><th>Function</th><th class="n">Share of operating headcount <span class="tag e">Estimate</span></th><th>Nature of work</th></tr></thead><tbody>
+<tr><td>Middle / back-office reconciliation</td><td class="n">~20%</td><td>Trade support, settlement, position and cash reconciliation, performance calc</td></tr>
+<tr><td>Client service &amp; communication</td><td class="n">~15%</td><td>Inbound queries, status, document requests, scheduling</td></tr>
+<tr><td>Client reporting &amp; documents</td><td class="n">~14%</td><td>Statement and review-pack generation, regulatory documents</td></tr>
+<tr><td>Onboarding / KYC / suitability</td><td class="n">~13%</td><td>Account opening, identity, suitability, periodic refresh</td></tr>
+<tr><td>Investment research &amp; analysis</td><td class="n">~12%</td><td>Screening, model maintenance, thesis production, data wrangling</td></tr>
+<tr><td>Portfolio construction &amp; rebalancing</td><td class="n">~10%</td><td>Drift detection, rebalance prep, proposal assembly</td></tr>
+<tr><td>Compliance monitoring &amp; surveillance</td><td class="n">~10%</td><td>Trade and comms surveillance, evidence, audit</td></tr>
+<tr><td>Sales / proposal support</td><td class="n">~6%</td><td>Proposal and pitch assembly, rationale write-ups</td></tr>
+</tbody></table></div>
+<p class="src">Functional mix is an analyst estimate calibrated to Oliver Wyman, Deloitte and McKinsey wealth-operations studies (2022-2024). Exact splits vary by institution; ranges, not point estimates, drive the model.</p>
+
+<h2 id="platform">3. How QINV disrupts each function</h2>
+<p>QINV is not a copilot bolted onto a legacy stack. Its 15 modules map one-to-one onto the operational functions above, and its agent layer runs the repeatable work end to end, with a full audit trail and human approval gates where regulation requires them.</p>
+<div class="table-wrap"><table><thead><tr><th>Operational function</th><th>QINV modules that absorb it</th><th>What stays human</th></tr></thead><tbody>
+<tr><td>Research &amp; analysis</td><td>X-Ray, Backtest, Builder, Market, Capsules, research agents</td><td>House view, conviction, client judgment</td></tr>
+<tr><td>Portfolio &amp; rebalancing</td><td>Robo-Advisor, Rebalance, Policy Engine</td><td>Final approval above thresholds</td></tr>
+<tr><td>Reporting &amp; documents</td><td>Reports engine, Audit Trail</td><td>Exception review, sign-off</td></tr>
+<tr><td>Onboarding / KYC / suitability</td><td>Clients, suitability workflow, Policy Engine</td><td>Edge-case adjudication</td></tr>
+<tr><td>Reconciliation / middle-back office</td><td>Operations, Integration Center, canonical contracts</td><td>Break investigation</td></tr>
+<tr><td>Client service</td><td>Inbox, conversational AI, Campaigns, Tickets</td><td>Relationship &amp; complex advice</td></tr>
+<tr><td>Compliance &amp; surveillance</td><td>Audit Trail, Policy Engine, RBAC</td><td>Judgment calls, regulator dialogue</td></tr>
+<tr><td>Sales / proposals</td><td>Builder, Capsules, Robo-Advisor rationale</td><td>Closing, relationship</td></tr>
+</tbody></table></div>
+<div class="hl"><h4>The structural point</h4><p>In a traditional firm, doubling AUM means roughly doubling the operational stack. With QINV fully integrated, the agent layer absorbs the marginal operational load, so assets can grow while operating headcount stays flat. That is the difference between a linear cost business and a scalable one.</p></div>
+
+<h2 id="auto">4. Automation potential by function</h2>
+<p>The displacement rates below are anchored to independent research, not to QINV's own claims. McKinsey estimates GenAI could add <strong>$200&ndash;340bn in annual value to banking</strong>, equivalent to 9&ndash;15% of operating profit, concentrated in exactly these functions <span class="src">[Sourced: McKinsey, "The economic potential of generative AI", 2023]</span>. BCG, Citi GPS and Evident reach consistent conclusions for wealth operations.</p>
+<div class="table-wrap"><table><thead><tr><th>Function</th><th class="n">Share of ops HC</th><th class="n">Automatable, low</th><th class="n">Automatable, base</th><th class="n">Automatable, high</th></tr></thead><tbody>
+<tr><td>Investment research &amp; analysis<br><span class='src'>QINV: X-Ray, Backtest, Builder, Market, Capsules, agentic research</span></td><td class='n'>12%</td><td class='n'>40%</td><td class='n'>55%</td><td class='n'>70%</td></tr><tr><td>Portfolio construction &amp; rebalancing<br><span class='src'>QINV: Robo-Advisor, Rebalance, Policy Engine</span></td><td class='n'>10%</td><td class='n'>35%</td><td class='n'>50%</td><td class='n'>65%</td></tr><tr><td>Client reporting &amp; document generation<br><span class='src'>QINV: Reports engine, Audit Trail, Powered by QINV</span></td><td class='n'>14%</td><td class='n'>55%</td><td class='n'>70%</td><td class='n'>85%</td></tr><tr><td>Client onboarding / KYC / suitability<br><span class='src'>QINV: Clients, suitability workflow, Policy Engine</span></td><td class='n'>13%</td><td class='n'>40%</td><td class='n'>55%</td><td class='n'>70%</td></tr><tr><td>Middle / back-office reconciliation<br><span class='src'>QINV: Operations, Integration Center, canonical contracts</span></td><td class='n'>20%</td><td class='n'>45%</td><td class='n'>60%</td><td class='n'>75%</td></tr><tr><td>Client service &amp; communication<br><span class='src'>QINV: Inbox, conversational AI, Campaigns, Tickets</span></td><td class='n'>15%</td><td class='n'>35%</td><td class='n'>50%</td><td class='n'>65%</td></tr><tr><td>Compliance monitoring &amp; surveillance<br><span class='src'>QINV: Audit Trail, Policy Engine, RBAC, evidence trail</span></td><td class='n'>10%</td><td class='n'>30%</td><td class='n'>45%</td><td class='n'>60%</td></tr><tr><td>Sales / proposal support<br><span class='src'>QINV: Builder, Capsules, Robo-Advisor rationale</span></td><td class='n'>6%</td><td class='n'>40%</td><td class='n'>55%</td><td class='n'>70%</td></tr>
+</tbody></table></div>
+<p class="src">Automatable-work ranges synthesized from McKinsey (2023), BCG "GenAI in wealth" (2024), Citi GPS "AI in Finance" (2024) and Evident AI Index. Figures describe work-hours automatable, not headcount automatically eliminated, the model's realization factor handles that gap.</p>
+<div class="callout"><strong>Honest distinction:</strong> "work automatable" is not the same as "jobs cut." A large share of freed capacity is typically reinvested into growth, advisor support, and new services. Our model converts only a fraction of automatable work into actual cost takeout (see realization factor below), which is why our headline numbers sit well below the raw automation ceiling.</div>
+
+<h2 id="model">5. The headcount-economics model</h2>
+<p>Three steps, all transparent:</p>
+<ol>
+<li><strong>Blended automatable share</strong> = sum of (function share &times; automatable %) across all operational functions.</li>
+<li><strong>Realization factor</strong> = the fraction of automatable work converted into real cost/FTE takeout. We use <code>0.35 / 0.55 / 0.75</code> for conservative / base / aggressive. The remainder is reinvested capacity, not savings.</li>
+<li><strong>Net operating-headcount reduction</strong> = blended automatable share &times; realization factor, applied to the operational (non-advisor) headcount, valued at a region-specific fully-loaded cost per FTE.</li>
+</ol>
+<div class="scen">
+  <div class="c"><b>Conservative</b><div class="big">14.3%</div><div class="src">of operating headcount, realization 0.35</div></div>
+  <div class="c base"><b>Base</b><div class="big">30.7%</div><div class="src">of operating headcount, realization 0.55</div></div>
+  <div class="c"><b>Aggressive</b><div class="big">53.1%</div><div class="src">of operating headcount, realization 0.75</div></div>
+</div>
+<p>Fully-loaded cost per FTE (salary, benefits, overhead) is set per region: <strong>~$70&ndash;80k</strong> in Brazil, <strong>~$180k</strong> in the US, <strong>~$165k</strong> in Western Europe <span class="src">[Industry-reported: financial-services comp surveys, 2023-2024]</span>.</p>
+
+<h2 id="clients">6. What it means for large clients</h2>
+<p>Applying the model to four real institutions, using public anchor figures and a modeled operational-headcount base. Advisors and RMs are augmented, not in scope for reduction.</p>
+<h3>XP Inc</h3>
+<p>R$1.529tn client assets, 18,000+ advisors, R$19.8bn quarterly gross revenue (1Q26) <span class='src'>[XP IR, 1Q26]</span></p>
+<div class='scen'><div class='c'><b>Conservative</b><div class='big'>$45M</div><div class='src'>644 operational FTE-equivalents / year</div></div><div class='c base'><b>Base</b><div class='big'>$97M</div><div class='src'>1,382 operational FTE-equivalents / year</div></div><div class='c'><b>Aggressive</b><div class='big'>$167M</div><div class='src'>2,390 operational FTE-equivalents / year</div></div></div>
+<p class='legend'>Advisor network (18k+ IFAs) is augmented, not replaced. Modeled population is the operational, middle/back-office and client-service staff that supports custody, reporting, onboarding and compliance.</p><h3>BTG Pactual</h3>
+<p>8,188 employees (2024); wealth &amp; consumer platform across LatAm <span class='src'>[BTG Pactual filings, 2024]</span></p>
+<div class='scen'><div class='c'><b>Conservative</b><div class='big'>$63M</div><div class='src'>786 operational FTE-equivalents / year</div></div><div class='c base'><b>Base</b><div class='big'>$135M</div><div class='src'>1,688 operational FTE-equivalents / year</div></div><div class='c'><b>Aggressive</b><div class='big'>$234M</div><div class='src'>2,920 operational FTE-equivalents / year</div></div></div>
+<p class='legend'>Modeled population is the operational and middle/back-office share of total staff supporting the wealth and consumer-banking platform.</p><h3>Morgan Stanley Wealth Management</h3>
+<p>~$6tn client assets; ~15,000 financial advisors; part of an 80,000+ employee group <span class='src'>[Morgan Stanley filings, 2024-2025]</span></p>
+<div class='scen'><div class='c'><b>Conservative</b><div class='big'>$721M</div><div class='src'>4,004 operational FTE-equivalents / year</div></div><div class='c base'><b>Base</b><div class='big'>$1.55bn</div><div class='src'>8,596 operational FTE-equivalents / year</div></div><div class='c'><b>Aggressive</b><div class='big'>$2.68bn</div><div class='src'>14,868 operational FTE-equivalents / year</div></div></div>
+<p class='legend'>Financial advisors are augmented. Modeled population is WM operations, service, middle and back office, reporting and compliance support staff.</p><h3>UBS Global Wealth Management</h3>
+<p>~$4.3tn invested assets in GWM; group AUM ~$6.99tn; 105,236 group employees <span class='src'>[UBS filings, 2024-2025]</span></p>
+<div class='scen'><div class='c'><b>Conservative</b><div class='big'>$755M</div><div class='src'>4,576 operational FTE-equivalents / year</div></div><div class='c base'><b>Base</b><div class='big'>$1.62bn</div><div class='src'>9,824 operational FTE-equivalents / year</div></div><div class='c'><b>Aggressive</b><div class='big'>$2.80bn</div><div class='src'>16,992 operational FTE-equivalents / year</div></div></div>
+<p class='legend'>Relationship managers are augmented. Modeled population is GWM operations, client service, middle and back office, reporting and compliance support staff.</p>
+<div class="hl"><h4>Reading the numbers</h4><p>Even in the <strong>conservative</strong> scenario, the annual operating saving for a single mega-client (Morgan Stanley WM, UBS GWM) exceeds <strong>$700M</strong>. At base case it clears <strong>$1.5bn</strong>. For the Brazilian leaders, base-case savings of <strong>$97M (XP)</strong> and <strong>$135M (BTG)</strong> dwarf any conceivable platform fee, which is the entire commercial argument.</p></div>
+
+<h2 id="why">7. Why this is defensible in diligence</h2>
+<ul>
+<li><strong>Advisors are never cut.</strong> Only operational, middle/back-office, reporting, onboarding, service and compliance-support staff are modeled. Revenue-facing capacity is protected.</li>
+<li><strong>Realization factor is conservative.</strong> We bank only 35&ndash;75% of automatable work as savings; the rest is reinvested capacity. This avoids the classic overstatement of "automatable = eliminated."</li>
+<li><strong>Third-party benchmarks, not self-assessment.</strong> Automation rates come from McKinsey, BCG, Citi GPS and Evident, not from QINV.</li>
+<li><strong>Public anchor figures.</strong> Client AUM, advisor counts and headcount come from filings and investor materials.</li>
+<li><strong>Ranges, not single numbers.</strong> Every output is a three-scenario band, so the thesis does not depend on a single optimistic input.</li>
+</ul>
+
+<h2 id="method">8. Methodology &amp; sources</h2>
+<h4>Model inputs</h4>
+<ul>
+<li>Functional headcount mix: analyst estimate calibrated to Oliver Wyman, Deloitte, McKinsey wealth-operations studies (2022-2024). <span class="tag e">Estimate</span></li>
+<li>Automatable-work ranges: McKinsey "Economic potential of generative AI" (2023); BCG GenAI in wealth (2024); Citi GPS "AI in Finance" (2024); Evident AI Index. <span class="tag s">Sourced</span></li>
+<li>Cost-to-income (60-80%) and comp share (50-65%): Oliver Wyman / Deloitte wealth benchmarks (2023-2024). <span class="tag i">Industry-reported</span></li>
+<li>Loaded cost per FTE by region: financial-services compensation surveys (2023-2024). <span class="tag i">Industry-reported</span></li>
+</ul>
+<h4>Client anchor figures</h4>
+<ul>
+<li>XP Inc: client assets, advisor count, revenue, XP Investor Relations, 1Q26. <span class="tag s">Sourced</span></li>
+<li>BTG Pactual: employee count and platform scale, BTG Pactual filings, 2024. <span class="tag s">Sourced</span></li>
+<li>Morgan Stanley WM: client assets and advisor count, Morgan Stanley filings, 2024-2025. <span class="tag s">Sourced</span></li>
+<li>UBS GWM: invested assets, group AUM and headcount, UBS filings, 2024-2025. <span class="tag s">Sourced</span></li>
+</ul>
+<div class="callout"><strong>Diligence note.</strong> This document is an illustrative economic model built for early-stage evaluation. Operational-headcount bases per client are estimates derived from public totals, not disclosed functional breakdowns. Automation and realization assumptions are benchmark-grounded and stated explicitly so they can be challenged and re-run. In confirmatory diligence these inputs should be reconciled to each institution's actual functional headcount and cost data under NDA. No client-specific or proprietary QINV implementation detail is disclosed here.</div>
+<div class="foot-tag">
+<span class="tag s">Sourced</span> <span class="tag i">Industry-reported</span> <span class="tag e">Estimate</span>
+</div>
+</main>
+</div>
+<div class="footer"><strong>QINV, Headcount Economics for Institutional Wealth Managers.</strong> Confidential, prepared for Caesar.vc. Illustrative model, benchmark-grounded; assumptions stated for challenge. Powered by QINV.</div>
+</body></html>
