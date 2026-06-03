@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>QINV, Enterprise Data Security &amp; Deployment Architecture</title>
+  <style>
+    :root{--bg:#f6f5f8;--paper:#fff;--ink:#17151d;--muted:#5f5968;--subtle:#837c91;--line:#ded9e8;--soft:#f0edf6;--soft2:#f8f6fb;--purple:#6d28d9;--deep:#2e1065;--green:#047857;--amber:#a16207;--red:#b91c1c;--mono:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;--sans:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:var(--sans);font-size:16px;line-height:1.58;color:var(--ink);background:var(--bg)}a{color:var(--deep);text-decoration:none}code{font-family:var(--mono)}
+    .layout{display:grid;grid-template-columns:330px 1fr;min-height:100vh}aside{position:sticky;top:0;height:100vh;padding:24px 20px;border-right:1px solid var(--line);background:#fff;overflow:auto}.brand{padding-bottom:18px;margin-bottom:18px;border-bottom:1px solid var(--line)}.brand .name{font-size:19px;font-weight:850;letter-spacing:-.03em}.brand .meta{margin-top:6px;color:var(--subtle);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em}nav{display:grid;gap:3px}nav a{padding:8px 10px;border-radius:9px;font-size:13.6px;color:#4b4458;font-weight:650}nav a:hover{background:var(--soft);color:var(--deep)}.side-box{margin-top:20px;padding:14px;border-radius:12px;background:var(--soft2);border:1px solid var(--line);color:var(--muted);font-size:12.5px}
+    main{max-width:1280px;padding:34px 54px 80px}.doc-header,section{background:var(--paper);border:1px solid var(--line);border-radius:16px}.doc-header{padding:32px;margin-bottom:22px}section{padding:30px;margin:0 0 22px}.eyebrow{color:var(--purple);font-size:12px;font-weight:850;letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px}h1{margin:0;font-size:42px;line-height:1.04;letter-spacing:-.05em}h2{margin:0 0 14px;font-size:30px;line-height:1.1;letter-spacing:-.035em}h3{margin:0 0 10px;font-size:20px;line-height:1.2;letter-spacing:-.02em}p{margin:0 0 12px;color:var(--muted)}strong{color:var(--ink)}
+    .grid{display:grid;gap:14px}.cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}.card{border:1px solid var(--line);background:var(--soft2);border-radius:14px;padding:16px}.card.white{background:#fff}.card.dark{background:#15111f;color:white;border-color:#15111f}.card.dark p,.card.dark li{color:#ded4f2}.card h3{font-size:17px}.card p,.card li{font-size:14.2px}.tag{display:inline-block;padding:4px 8px;border-radius:999px;background:var(--soft);color:var(--deep);font-weight:750;font-size:11px;margin:2px 4px 2px 0}.tag.green{background:#ecfdf5;color:var(--green)}.tag.amber{background:#fffbeb;color:var(--amber)}.tag.red{background:#fef2f2;color:var(--red)}
+    table{width:100%;border-collapse:collapse;font-size:14.2px;margin-top:14px}th,td{text-align:left;vertical-align:top;padding:12px;border-bottom:1px solid var(--line)}th{background:var(--soft2);color:var(--deep);font-size:11px;letter-spacing:.08em;text-transform:uppercase}td{color:#3f3949}ul,ol{margin:8px 0 0;padding-left:20px;color:var(--muted)}li{margin:4px 0}.note{padding:15px 16px;border-left:4px solid var(--purple);background:var(--soft2);border-radius:0 12px 12px 0;margin:16px 0}.meta-table{display:grid;grid-template-columns:180px 1fr;border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:18px}.meta-table div{padding:10px 12px;border-bottom:1px solid var(--line)}.meta-table div:nth-child(odd){background:var(--soft2);color:var(--deep);font-weight:800}.meta-table div:nth-last-child(-n+2){border-bottom:0}
+    .flow{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;margin:16px 0}.step{border:1px solid var(--line);border-radius:12px;padding:12px 8px;min-height:68px;background:#fff;display:grid;place-items:center;text-align:center;font-size:12px;font-weight:750;color:#3d354a}.step.key{background:var(--deep);color:#fff;border-color:var(--deep)}.codeblock{background:#15111f;color:#ebe4ff;border-radius:12px;padding:16px;font-size:12px;overflow:auto;line-height:1.55}.section-meta{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 16px}
+    .kpi{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:16px}.kpi .card{text-align:center}.kpi .big{font-size:30px;font-weight:850;letter-spacing:-.03em;color:var(--deep);line-height:1}.kpi .lab{margin-top:8px;font-size:12.5px;color:var(--muted)}
+    .split{display:grid;grid-template-columns:1fr 56px 1fr;align-items:stretch;gap:0;margin-top:16px}.split .arrow{display:grid;place-items:center;font-size:24px;color:var(--purple);font-weight:800}.plane{border-radius:14px;padding:18px}.plane.ctrl{background:#15111f;color:#fff;border:1px solid #15111f}.plane.ctrl h3{color:#fff}.plane.data{background:var(--soft2);border:1px solid var(--line)}.plane h3{font-size:16px;margin-bottom:4px}.plane .sub{font-size:12px;color:var(--subtle);margin-bottom:12px}.plane.ctrl .sub{color:#b9a8e0}.line{display:flex;gap:8px;align-items:flex-start;font-size:13.4px;margin:6px 0;line-height:1.4}.line .mk{font-weight:850;flex:0 0 auto}.yes{color:var(--green)}.no{color:var(--red)}.plane.ctrl .yes{color:#34d399}.plane.ctrl .no{color:#fb7185}.plane.ctrl .line{color:#e4daf7}
+    @media(max-width:1000px){.layout{grid-template-columns:1fr}aside{position:relative;height:auto}main{padding:20px}.cols-2,.cols-3,.cols-4{grid-template-columns:1fr}.flow{grid-template-columns:repeat(2,minmax(0,1fr))}.kpi{grid-template-columns:repeat(2,minmax(0,1fr))}.split{grid-template-columns:1fr}.split .arrow{padding:8px 0;transform:rotate(90deg)}}@media print{aside{display:none}.layout{display:block}main{max-width:none;padding:0}section,.doc-header{break-inside:avoid;border-radius:0}body{background:#fff}}
+  </style>
+</head>
+<body>
+<div class="layout">
+  <aside>
+    <div class="brand"><div class="name">QINV Enterprise Architecture</div><div class="meta">Data Security &amp; Deployment</div></div>
+    <nav>
+      <a href="#control">Document metadata</a>
+      <a href="#summary">1. Executive summary</a>
+      <a href="#target">2. Target architecture</a>
+      <a href="#deployment">3. Deployment model</a>
+      <a href="#functionality">4. Functionality preservation</a>
+      <a href="#controls">5. Security controls</a>
+      <a href="#aigov">6. AI governance</a>
+      <a href="#access">7. Access model</a>
+      <a href="#risk">8. Residual risk matrix</a>
+      <a href="#pilot">9. Pilot &amp; due diligence</a>
+      <a href="#closing">10. Closing message</a>
+    </nav>
+    <div class="side-box">Enterprise deployment reference describing how the QINV platform installs inside a large institution's controlled environment, keeping sensitive data inside the institution's perimeter. NDA-safe: no internal component identifiers, perimeter configuration, credentials, or runbooks are included.</div>
+  </aside>
+  <main>
+    <header id="control" class="doc-header">
+      <div class="eyebrow">QINV enterprise architecture</div>
+      <h1>Data security without losing functionality</h1>
+      <p style="margin-top:16px;max-width:920px">A reference architecture for delivering the QINV platform for deployment inside an enterprise-controlled environment, with QINV holding only temporary, approved access for updates, maintenance, and support. Sensitive data remains inside the institution's perimeter.</p>
+      <div class="note"><p><strong>Central thesis:</strong> for a large institution, QINV should not be treated as one more external SaaS receiving PII and financial data. The enterprise model separates software, data, and intelligence: QINV delivers the platform to run inside the institution's environment; the data plane stays under the institution's control; intelligence features are consumed through APIs without sending identifiable client data outside the approved perimeter.</p></div>
+      <div class="meta-table"><div>Document class</div><div>Enterprise deployment &amp; data-security reference</div><div>Company</div><div>QINV</div><div>Scope</div><div>Control/data plane separation, deployment options, security controls, AI governance, vendor access, residual risk, secure pilot path</div><div>Disclosure level</div><div>NDA-safe; no perimeter configuration, credentials, or runbooks</div><div>Prepared for</div><div>Caesar.vc, confidential</div></div>
+    </header>
+
+    <section id="summary"><div class="section-meta"><span class="tag">Executive summary</span><span class="tag green">Custody-minimizing</span></div><h2>1. The problem is not functionality. It is custody, data egress, and operational exposure.</h2>
+      <p>A large institution's concern is correct: identifiable client data, portfolios, suitability, communications, and documents create operational, regulatory, and reputational risk. The answer should not be "trust QINV." The answer should be: the platform can be installed inside the institution's environment, with no need for sensitive data to leave that environment or be operationally custodied by QINV.</p>
+      <div class="grid cols-3">
+        <div class="card"><h3>1. The institution controls the data plane</h3><p>PII, portfolios, suitability, communications, logs, and keys all remain inside the institution's environment, governance, and policies.</p></div>
+        <div class="card"><h3>2. QINV delivers the software</h3><p>Product, UX, workflows, templates, releases, and maintenance are decoupled from custody of sensitive data. QINV accesses the environment only on a temporary, approved, and auditable basis.</p></div>
+        <div class="card"><h3>3. Functionality preserved</h3><p>Portfolio X-ray, reports, CRM, messaging, tickets, operations, AI, and governance all remain available. Intelligence is consumed through approved APIs and gateways, with no need to send identifiable client data to QINV.</p></div>
+      </div>
+      <div class="note"><p><strong>Design principle:</strong> deliver the platform to operate inside the institution's perimeter and reduce the operational trust required in QINV.</p></div>
+      <div class="grid cols-2" style="margin-top:14px">
+        <div class="card white"><h3>What changes</h3><p>The architecture keeps sensitive risk inside the institution's perimeter: identity, keys, logs, financial data, communications, policies, and integrations.</p></div>
+        <div class="card white"><h3>What does not change</h3><p>Product experience, operational journey, reports, intelligence, and workflows all remain available through private deployment and controlled APIs.</p></div>
+      </div>
+    </section>
+
+    <section id="target"><div class="section-meta"><span class="tag">Target architecture</span></div><h2>2. Control plane / data plane separation</h2>
+      <p>QINV delivers the platform to run in a cloud, VPC, account, or infrastructure controlled by the institution. Product and evolution stay separate from real-data processing, preserving governance of data, identity, AI, keys, logs, and integrations.</p>
+      <div class="split">
+        <div class="plane ctrl"><h3>QINV control plane</h3><div class="sub">Software, releases, and support without PII custody</div>
+          <div class="line"><span class="mk yes">&#10003;</span><span>Code and release packages</span></div>
+          <div class="line"><span class="mk yes">&#10003;</span><span>Approved updates and maintenance</span></div>
+          <div class="line"><span class="mk yes">&#10003;</span><span>Templates and workflows</span></div>
+          <div class="line"><span class="mk yes">&#10003;</span><span>Feature flags and configuration</span></div>
+          <div class="line"><span class="mk yes">&#10003;</span><span>Technical telemetry without PII</span></div>
+          <div class="line"><span class="mk no">&#10007;</span><span>No tax ID, phone, email, or document</span></div>
+          <div class="line"><span class="mk no">&#10007;</span><span>No identifiable positions or portfolios</span></div>
+          <div class="line"><span class="mk no">&#10007;</span><span>No real client messages</span></div>
+          <div class="line"><span class="mk no">&#10007;</span><span>No master keys or institution secrets</span></div>
+        </div>
+        <div class="arrow">&#8594;</div>
+        <div class="plane data"><h3>Enterprise data plane</h3><div class="sub">Data, identity, logs, and keys under the institution's control</div>
+          <div class="line"><span class="mk yes">&#10003;</span><span>Client Vault / CRM / onboarding records</span></div>
+          <div class="line"><span class="mk yes">&#10003;</span><span>Portfolios, transactions, and suitability</span></div>
+          <div class="line"><span class="mk yes">&#10003;</span><span>Official messaging, archive, and supervision</span></div>
+          <div class="line"><span class="mk yes">&#10003;</span><span>Policy engine and audit trail</span></div>
+          <div class="line"><span class="mk yes">&#10003;</span><span>AI Gateway and approved APIs</span></div>
+          <div class="line"><span class="mk yes">&#10003;</span><span>KMS/HSM, SIEM, and retention</span></div>
+        </div>
+      </div>
+      <div class="grid cols-2" style="margin-top:16px">
+        <div class="card"><h3>Security by architecture</h3><p>Sensitive data, full logs, integrations, and keys do not need to leave the institution's environment.</p></div>
+        <div class="card"><h3>Governance preserved</h3><p>The institution controls identity, data, keys, logs, integrations, intelligence APIs, AI, and retention.</p></div>
+      </div>
+      <div class="note"><p><strong>Practical result:</strong> the QINV platform operates as an intelligence cockpit inside the institution's environment. Updates and maintenance use temporary, approved access with no extraction of sensitive data.</p></div>
+    </section>
+
+    <section id="deployment"><div class="section-meta"><span class="tag">Deployment model</span></div><h2>3. Three possible models, with a clear recommendation</h2>
+      <p>The choice should reflect the institution's risk appetite and the level of control a systemically important organization requires.</p>
+      <table><thead><tr><th>Model</th><th>Description</th><th>Control</th><th>Enterprise fit</th></tr></thead><tbody>
+        <tr><td><strong>SaaS Enterprise Dedicated</strong></td><td>Dedicated environment managed by QINV, with isolated tenant, encryption, DPA, and enterprise controls.</td><td>Medium</td><td>Useful for smaller clients; likely insufficient for a large institution's core concern.</td></tr>
+        <tr><td><strong>Private Deployment</strong></td><td>The QINV platform is delivered by QINV for deployment in a cloud, VPC, account, or infrastructure controlled by the institution, integrated with internal systems and policies.</td><td>High</td><td><strong>Recommended.</strong> Preserves functionality and reduces external custody of sensitive data.</td></tr>
+        <tr><td><strong>Embedded / white-label</strong></td><td>QINV operates as a white-label engine/product embedded inside the institution's digital ecosystem.</td><td>Maximum</td><td>Strategic model for scale, distribution, and deep integration.</td></tr>
+      </tbody></table>
+      <div class="grid cols-2" style="margin-top:16px">
+        <div class="card white"><h3>Recommendation</h3><p>Start with <strong>Private Deployment</strong>: QINV software installed inside the institution's environment, the institution's data plane, approved intelligence APIs, and just-in-time support access for updates and maintenance.</p></div>
+        <div class="card white"><h3>Future option</h3><p>If the case evolves toward distribution at scale, migrate to an embedded / white-label model inside the institution's ecosystem.</p></div>
+      </div>
+    </section>
+
+    <section id="functionality"><div class="section-meta"><span class="tag">Functionality preservation</span></div><h2>4. The platform does not lose functionality; the data perimeter changes</h2>
+      <p>The same product experience can operate with real data inside the institution's environment, minimized data for AI, and synthetic data for demo/sandbox.</p>
+      <table><thead><tr><th>Functionality</th><th>How it is preserved without exposing data to QINV</th><th>Institution control</th></tr></thead><tbody>
+        <tr><td>Dashboard / cockpit</td><td>Rendering over internal APIs or approved data marts. Product telemetry, when needed, leaves only without PII.</td><td>IAM, RBAC/ABAC, data freshness, and SIEM logs.</td></tr>
+        <tr><td>Portfolio X-ray</td><td>Computed inside the institution's data plane. Output stored in the institution's repository, with no export of identifiable data to QINV.</td><td>Sources, suitability, timestamp, and audit.</td></tr>
+        <tr><td>Robo-advisor</td><td>Recommendations pass through a policy engine and human approval before any action.</td><td>No automatic execution; auditable rationales.</td></tr>
+        <tr><td>Reports</td><td>QINV templates combined with institution data. Generation and storage inside the institution's perimeter.</td><td>Retention, review, versioning, and send trail.</td></tr>
+        <tr><td>Messaging</td><td>Official/approved messaging API, archive, and supervision; messages stay outside the QINV environment.</td><td>Supervision, retention, eDiscovery, and export compliance.</td></tr>
+        <tr><td>Tickets / operations</td><td>QINV workflow and UI, with entities and history in the institution's database/CRM.</td><td>Permissions by role, team, channel, and portfolio.</td></tr>
+        <tr><td>AI and insights</td><td>Intelligence APIs and the institution's AI Gateway with redaction, minimization, validation, and approved providers. No need to send PII or identifiable client data.</td><td>Prompt/model version, logs, no-training, and approvals.</td></tr>
+      </tbody></table>
+      <div class="note"><p><strong>Conclusion:</strong> QINV delivers the product layer, releases, maintenance, and intelligence; the institution controls where real data lives, how it is accessed, which APIs can be called, who approves actions, and how everything is audited.</p></div>
+    </section>
+
+    <section id="controls"><div class="section-meta"><span class="tag">Security controls</span></div><h2>5. Enterprise controls that turn risk into governance</h2>
+      <p>The design must make explicit who controls identity, data, keys, logs, access, AI, and integrations.</p>
+      <div class="grid cols-2">
+        <div class="card"><h3>PII Vault and pseudonymization</h3><p>Real identity remains in the institution's vault. The application operates with canonical IDs, household IDs, portfolio IDs, and the attributes required for the workflow.</p></div>
+        <div class="card"><h3>BYOK / HYOK</h3><p>Encryption with keys controlled by the institution via KMS/HSM. QINV does not control the master key for sensitive data.</p></div>
+        <div class="card"><h3>RBAC + ABAC</h3><p>Permissions by role, portfolio, office, channel, data, action, context, and criticality. QINV support operates without PII by default and with temporary access when necessary.</p></div>
+        <div class="card"><h3>Immutable audit trail</h3><p>A record of access, generation, recommendation, approval, send, integration, failure, applied policy, and AI/prompt version.</p></div>
+        <div class="card"><h3>Institution-approved AI Gateway</h3><p>AI only through an institution-approved gateway/API, with redaction and minimization before sending. No identifiable client information to external models or providers.</p></div>
+        <div class="card"><h3>Read-only first</h3><p>A pilot can start as an intelligence and productivity layer, with no automatic financial execution or change to records.</p></div>
+      </div>
+    </section>
+
+    <section id="aigov"><div class="section-meta"><span class="tag">AI governance</span></div><h2>6. AI with data minimization, validation, and human approval</h2>
+      <p>The architecture allows intelligence features to be consumed through institution-approved APIs or gateways, with no need to send identifiable client information. Prompts use minimized, redacted, or pseudonymized data, with validation and human approval.</p>
+      <div class="flow" style="grid-template-columns:repeat(5,minmax(0,1fr))">
+        <div class="step key">1. Data minimization</div>
+        <div class="step key">2. PII redaction</div>
+        <div class="step key">3. Approved model</div>
+        <div class="step key">4. Validation layer</div>
+        <div class="step key">5. Human approval</div>
+      </div>
+      <div class="grid cols-3">
+        <div class="card"><h3>1. Data minimization</h3><p>Send to AI only the necessary, minimized, or pseudonymized attributes: profile, composition, alerts, and objective.</p></div>
+        <div class="card"><h3>2. PII redaction</h3><p>Remove names, tax IDs, phone, email, documents, and direct identifiers.</p></div>
+        <div class="card"><h3>3. Approved model</h3><p>Use an internal model or a gateway approved by the institution.</p></div>
+        <div class="card"><h3>4. Validation layer</h3><p>Validate schema, language, suitability, disclaimers, evidence, and policies.</p></div>
+        <div class="card"><h3>5. Human approval</h3><p>An advisor / compliance approves recommendations, reports, and sensitive communications.</p></div>
+      </div>
+      <div class="grid cols-2" style="margin-top:16px">
+        <div class="card dark"><h3>Allowed payload example</h3><p>Profile: moderate; allocation: fixed income 72%, equities 18%, alternatives 10%; alerts: issuer concentration, low liquidity; objective: generate a portfolio X-ray explanation for advisor review.</p></div>
+        <div class="card white"><h3>Data that does not need to go to AI</h3><p>Name, tax ID, phone, email, address, account, documents, full messages, direct identifiers, and unnecessary personal history.</p></div>
+      </div>
+      <div class="note"><p><strong>Message to the institution:</strong> QINV does not need to receive raw client data or take it outside the institution's environment. Intelligence features can be accessed via API, with minimized, redacted, or pseudonymized payloads and governance approved by the institution.</p></div>
+    </section>
+
+    <section id="access"><div class="section-meta"><span class="tag">Access model</span></div><h2>7. Vendor access minimization</h2>
+      <p>To reduce vendor risk, the operating model must be explicit: minimal, temporary, approved, and auditable access.</p>
+      <table><thead><tr><th>Category</th><th>Recommended QINV access</th><th>Rationale</th></tr></thead><tbody>
+        <tr><td>Code, templates, and configuration</td><td><span class="tag green">Allowed</span></td><td>Required for product evolution, updates, maintenance, and functional support.</td></tr>
+        <tr><td>Technical telemetry without PII</td><td><span class="tag green">Allowed</span></td><td>Required for performance, errors, and availability, provided there is no client data.</td></tr>
+        <tr><td>Logs with sensitive data</td><td><span class="tag amber">Restricted / redacted</span></td><td>Support must operate with minimized logs. Full access only under an approved, temporary, and auditable exception.</td></tr>
+        <tr><td>Real client data</td><td><span class="tag red">Not accessible by default</span></td><td>Reduces custody, leakage, and vendor liability risk.</td></tr>
+        <tr><td>Keys, secrets, and internal integrations</td><td><span class="tag red">Not accessible</span></td><td>Control remains in the institution's KMS / secret manager.</td></tr>
+        <tr><td>Production support access</td><td><span class="tag amber">Just-in-time</span></td><td>Temporary, approved, recorded, minimal-scope, with audit trail and no extraction of sensitive data.</td></tr>
+      </tbody></table>
+    </section>
+
+    <section id="risk"><div class="section-meta"><span class="tag">Residual risk</span></div><h2>8. Risk does not disappear; it becomes controllable</h2>
+      <p>The correct framing is not "zero risk," but rather: no new external point of PII concentration, with controls compatible with banking governance.</p>
+      <table><thead><tr><th>Risk</th><th>Without enterprise model</th><th>With enterprise data plane</th><th>Proposed control</th></tr></thead><tbody>
+        <tr><td>PII leakage at the vendor</td><td><span class="tag red">High</span></td><td><span class="tag green">Low</span></td><td>Institution PII Vault, minimization, support without PII, redacted logs.</td></tr>
+        <tr><td>Data exposure to an AI provider</td><td><span class="tag red">High</span></td><td><span class="tag amber">Low / Medium</span></td><td>Institution AI Gateway, redaction, approved models, no-training, validation.</td></tr>
+        <tr><td>Improper financial action</td><td><span class="tag amber">Medium / High</span></td><td><span class="tag green">Low</span></td><td>Read-only first, human approval, policy engine, no automatic execution in the pilot.</td></tr>
+        <tr><td>Improper access by an internal user</td><td><span class="tag amber">Medium</span></td><td><span class="tag amber">Low / Medium</span></td><td>RBAC/ABAC, segregation by portfolio, step-up auth, and audit.</td></tr>
+        <tr><td>Integration failure or stale data</td><td><span class="tag amber">Medium</span></td><td><span class="tag amber">Medium, controlled</span></td><td>Integration center, data freshness, circuit breakers, and health checks.</td></tr>
+        <tr><td>Communication liability</td><td><span class="tag red">High</span></td><td><span class="tag amber">Medium, controlled</span></td><td>Official messaging API, archive, supervision, retention, and export compliance.</td></tr>
+      </tbody></table>
+    </section>
+
+    <section id="pilot"><div class="section-meta"><span class="tag">Pilot &amp; due diligence</span></div><h2>9. A secure pilot: intelligence and productivity before execution</h2>
+      <p>To reduce approval friction, the pilot should demonstrate operational value without requiring broad access, automatic execution, or unnecessary data exposure.</p>
+      <div class="grid cols-4">
+        <div class="card"><h3>Sandbox</h3><p>Demo tenant with synthetic data and institution branding.</p></div>
+        <div class="card"><h3>Read-only</h3><p>Initial integrations are read-only for portfolios, clients, and suitability.</p></div>
+        <div class="card"><h3>Human approval</h3><p>Reports, messages, and recommendations require human approval.</p></div>
+        <div class="card"><h3>Audit first</h3><p>Every access, recommendation, report, and send generates a verifiable trail.</p></div>
+      </div>
+      <table><thead><tr><th>Phase</th><th>Objective</th><th>Recommended scope</th><th>Go / no-go</th></tr></thead><tbody>
+        <tr><td><strong>0. Security design review</strong></td><td>Validate the architecture with technology, security, legal, and compliance.</td><td>Data flow, IAM, AI Gateway, logs, keys, support, retention.</td><td>Design and threat-model approval.</td></tr>
+        <tr><td><strong>1. Synthetic demo</strong></td><td>Demonstrate UX and workflows with no real data.</td><td>Dashboard, X-ray, reports, tickets, messaging mock, audit trail.</td><td>Product and journey approved by sponsors.</td></tr>
+        <tr><td><strong>2. Controlled pilot</strong></td><td>Connect minimized / read-only data inside the institution's environment.</td><td>Restricted group, portfolios/pseudonyms, minimized AI.</td><td>No incidents, full logs, operational value validated.</td></tr>
+        <tr><td><strong>3. Production path</strong></td><td>Expand modules and critical integrations.</td><td>SSO, RBAC/ABAC, SIEM, retention, official messaging, SOW.</td><td>Security, compliance, and business criteria met.</td></tr>
+      </tbody></table>
+    </section>
+
+    <section id="closing"><div class="section-meta"><span class="tag">Closing message</span></div><h2>10. The next conversation should be about controlled architecture, not generic trust</h2>
+      <p>The conversation with a large institution should move from "security in the abstract" into the design of perimeter, responsibilities, and residual risk.</p>
+      <div class="grid cols-2">
+        <div class="card white"><h3>Materials to prepare</h3><ul>
+          <li>Data-flow diagram with PII boundaries</li>
+          <li>Summarized threat model</li>
+          <li>QINV vs. institution responsibility matrix</li>
+          <li>AI governance model</li>
+          <li>Access and support policy</li>
+          <li>Pilot SOW with read-only scope</li>
+        </ul></div>
+        <div class="card white"><h3>Questions for the institution</h3><ul>
+          <li>Approved cloud/VPC and standards</li>
+          <li>IAM/SSO, groups, and authorization</li>
+          <li>Permitted AI providers/gateways</li>
+          <li>Communications retention and archiving</li>
+          <li>SIEM/logging and audit requirements</li>
+          <li>Minimum data for the first pilot</li>
+        </ul></div>
+      </div>
+      <div class="note"><p><strong>Final message:</strong> the QINV platform can be positioned as an enterprise-grade layer of intelligence and wealth operation, delivered for deployment inside the institution's control perimeter, not as an external SaaS concentrating sensitive data.</p></div>
+      <div class="card dark" style="margin-top:16px"><h3>&#8594; Recommended next step</h3><p>A technical workshop with Security, Architecture, Technology, Legal, and Compliance to validate deployment inside the institution's environment, the data perimeter, integrations, intelligence APIs, the QINV temporary-access model, and the read-only pilot scope.</p></div>
+      <div class="note"><p>This document is a proposed architecture and an initial technical conversation. The final design depends on joint validation with the institution's Information Security, Architecture, Legal, Compliance, Operations, and Technology teams.</p></div>
+    </section>
+  </main>
+</div>
+<script>
+  const links=[...document.querySelectorAll('nav a')];
+  const sections=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  const obs=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){links.forEach(a=>a.style.background='');const active=links.find(a=>a.getAttribute('href')==='#'+entry.target.id);if(active)active.style.background='var(--soft)';}})},{rootMargin:'-20% 0px -72% 0px',threshold:0});
+  sections.forEach(s=>obs.observe(s));
+</script>
+</body>
+</html>
